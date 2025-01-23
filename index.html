@@ -482,35 +482,60 @@
 
     <script>
       function initialTheme() {
+        // 데스크톱용 다크모드 토글 아이콘
         const darkModeToggleIcon = document
           .getElementById('darkModeToggle')
           .querySelector('i');
+
+        // 모바일용 다크모드 토글 아이콘
+        const darkModeToggleMobileIcon = document
+          .getElementById('darkModeToggleMobile')
+          .querySelector('i');
+
         if (localStorage.theme === 'dark') {
           document.documentElement.classList.add('dark');
           darkModeToggleIcon.className = 'fas fa-sun text-yellow-400';
+          darkModeToggleMobileIcon.className = 'fas fa-sun text-yellow-400';
         } else {
           document.documentElement.classList.remove('dark');
           darkModeToggleIcon.className = 'fas fa-moon text-gray-700';
+          darkModeToggleMobileIcon.className = 'fas fa-moon text-gray-700';
         }
       }
 
       function toggleDarkMode() {
+        // 데스크톱용 다크모드 토글 아이콘
         const darkModeToggleIcon = document
           .getElementById('darkModeToggle')
           .querySelector('i');
+
+        // 모바일용 다크모드 토글 아이콘
+        const darkModeToggleMobileIcon = document
+          .getElementById('darkModeToggleMobile')
+          .querySelector('i');
+
         if (document.documentElement.classList.contains('dark')) {
           document.documentElement.classList.remove('dark');
           localStorage.theme = 'light';
           // fas fa-moon text-gray-700 dark:text-yellow-400
           darkModeToggleIcon.className = 'fas fa-moon text-gray-700';
+          darkModeToggleMobileIcon.className = 'fas fa-moon text-gray-700';
         } else {
           document.documentElement.classList.add('dark');
           localStorage.theme = 'dark';
           darkModeToggleIcon.className = 'fas fa-sun text-yellow-400';
+          darkModeToggleMobileIcon.className = 'fas fa-sun text-yellow-400';
         }
       }
+
+      // 기존: 데스크톱 다크모드 토글 버튼
       document
         .getElementById('darkModeToggle')
+        .addEventListener('click', toggleDarkMode);
+
+      // 추가: 모바일 다크모드 토글 버튼
+      document
+        .getElementById('darkModeToggleMobile')
         .addEventListener('click', toggleDarkMode);
 
       const mobileMenu = document.getElementById('mobileMenu');
